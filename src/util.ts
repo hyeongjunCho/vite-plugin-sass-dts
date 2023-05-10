@@ -16,8 +16,9 @@ export const getRelativePath = (
   from: string | undefined,
   to: string | undefined
 ) => {
-  const relativePath =
+  const relativePath = (
     path.relative(path.dirname(from || ''), path.dirname(to || '')) || './'
+  ).replace(new RegExp('/\\/g'), '/')
 
   return relativePath.endsWith('..') ? `${relativePath}/` : relativePath
 }
