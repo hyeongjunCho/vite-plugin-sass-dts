@@ -28,7 +28,7 @@ var isCSSModuleRequest = (request) => cssModuleReg.test(request)
 var getRelativePath = (from, to) => {
   const relativePath = (
     path.relative(path.dirname(from || ''), path.dirname(to || '')) || './'
-  ).replace(new RegExp('/\\/g'), '/')
+  ).replace(/\\/g, '/')
   return relativePath.endsWith('..') ? `${relativePath}/` : relativePath
 }
 var toDashCase = (target) =>
